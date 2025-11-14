@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .navbar ul li {
+            padding: 14px 20px;
+        }
+        .navbar ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+        .navbar ul li a:hover {
+            text-decoration: underline;
+        }
+        .login-container {
+            height: calc(100vh - 52px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: 0px 0px 10px yellow;
+            width: 300px;
+        }
+        h2 {
+            color: yellow;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            color: yellow;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid yellow;
+            border-radius: 5px;
+            background-color: #222;
+            color: yellow;
+        }
+        .password-wrapper {
+            position: relative;
+        }
+        .toggle-eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            opacity: 0.5;
+            color: black;
+        }
+        .toggle-eye:hover {
+            opacity: 1;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        button {
+            background-color: yellow;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #ffcc00;
+        }
+        .register-link-container {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .register-link-container a {
+            color: yellow;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .register-link-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+    </ul>
+</nav>
+
+<div class="login-container">
+    <div class="login-box">
+        <form method="POST">
+            <h2>Login</h2>
+            <label>Username:</label><br>
+            <input type="text" name="username" required><br>
+            <label>Password:</label><br>
+            <div class="password-wrapper">
+                <input type="password" name="password" id="password" required>
+                <i class="fa-solid fa-eye toggle-eye" onclick="togglePassword()"></i>
+            </div><br>
+            <div class="btn-container">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="register-link-container">
+            <a href="{{ url_for('register') }}">Register</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function togglePassword() {
+    const pwd = document.getElementById("password");
+    pwd.type = pwd.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — CityFlow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg1: #020617;
+      --bg2: #0b2545;
+      --accent1: #ff7a59;
+      --accent2: #ffd700; /* 💛 Changed to yellow for title and headings */
+      --muted: rgba(255,255,255,0.8);
+    }
+
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+      padding: 14px 24px;
+      z-index: 10;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .navbar a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: var(--accent2);
+      text-shadow: 0 0 10px var(--accent2);
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      color: var(--accent2); /* 💛 Yellow title */
+      text-shadow: 0 0 15px rgba(255,255,255,0.15);
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-top: 16px;
+      font-size: 1.1rem;
+    }
+
+    /* Containers */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    section {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      padding: 30px 25px;
+      border-radius: 18px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+      transition: none;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      color: var(--accent2); /* 💛 Yellow headings */
+      margin-bottom: 14px;
+    }
+
+    section p, section ul {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 10px;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 20px;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(8px);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      section { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>About Traffic Flow Prediction</h1>
+    <p>Empowering smarter and safer travel through intelligent data-driven traffic forecasting.</p>
+  </div>
+
+  <div class="container">
+
+    <section>
+      <h2>Introduction to the Project</h2>
+      <p>
+        Our <strong>Traffic Flow Prediction</strong> project provides users with real-time insights into traffic conditions across various locations. 
+        By combining <strong>geographical data</strong> and <strong>natural language processing (NLP)</strong>, 
+        this tool helps users make informed decisions for safer and more efficient travel routes.
+      </p>
+    </section>
+
+    <section>
+      <h2>What Makes Our Project Unique</h2>
+      <p>
+        This system stands out by merging <strong>location-based data</strong> with textual traffic descriptions to create an accurate traffic forecast. 
+        Whether you’re commuting daily or scheduling trips around peak hours, our prediction model delivers 
+        <strong>real-time, location-specific insights</strong> that go beyond standard traffic maps.
+      </p>
+    </section>
+
+    <section>
+      <h2>How the Project Works</h2>
+      <ul>
+        <li><strong>Enter Location Details:</strong> Begin by entering a city name, and optionally, a specific street for prediction.</li>
+        <li><strong>Provide a Traffic Description:</strong> Add any relevant context like “rush hour” or “road construction” for better accuracy.</li>
+        <li><strong>Receive a Customized Prediction:</strong> Click <strong>Entry</strong> to let the system analyze your inputs and display whether traffic is heavy or smooth.</li>
+        <li><strong>Show Traffic Data:</strong> Use the <strong>Show</strong> feature to search the database and view matching traffic records in a structured format.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Values and Vision</h2>
+      <p>
+        Our mission is to make daily commuting easier by helping users <strong>avoid congested areas</strong> 
+        and choose better routes. With accurate, data-driven insights, we aim to promote 
+        <strong>smarter, safer, and sustainable travel decisions</strong>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Explore Our Features</h2>
+      <p>
+        Try out our traffic prediction app and experience <strong>personalized, adaptive insights</strong> 
+        that align with your specific location and traffic context — enabling you to navigate the city with ease and confidence.
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 CityFlow. All rights reserved. Designed with precision and passion.
+  </footer>
+
+</body>
+</html>

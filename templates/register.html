@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: black; 
+            padding: 20px; 
+            color: yellow;
+        }
+        form { 
+            background: #111; 
+            padding: 20px; 
+            max-width: 500px; 
+            margin: auto; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px yellow;
+        }
+        input[type="text"], 
+        input[type="password"], 
+        input[type="tel"] {
+            width: 100%; 
+            padding: 10px; 
+            margin: 8px 0; 
+            box-sizing: border-box;
+            border: 1px solid yellow;
+            border-radius: 5px;
+            background-color: #222;
+            color: yellow;
+        }
+        button { 
+            padding: 10px 20px; 
+            background: yellow; 
+            color: black; 
+            border: none; 
+            cursor: pointer; 
+            font-weight: bold;
+            width: 100%;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #ffcc00;
+        }
+        .flash { 
+            color: red; 
+            margin-bottom: 10px; 
+        }
+        h2 {
+            text-align: center;
+            color: yellow;
+        }
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: yellow;
+        }
+        .password-wrapper {
+            position: relative;
+        }
+        .toggle-eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            opacity: 0.5;
+            color: black;
+        }
+        .toggle-eye:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Traffic Personnel Registration</h2>
+
+<form method="POST" action="{{ url_for('register') }}">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="flash {{ category }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <label>Username</label>
+    <input type="text" name="username" required>
+
+    <label>Password</label>
+    <div class="password-wrapper">
+        <input type="password" name="password" id="password" required>
+        <i class="fa-solid fa-eye toggle-eye" onclick="togglePassword()"></i>
+    </div>
+
+    <label>Police ID</label>
+    <input type="text" name="police_id" required>
+
+    <label>Station ID</label>
+    <input type="text" name="station_id" required>
+
+    <label>Station Name</label>
+    <input type="text" name="station_name" required>
+
+    <label>Police Name</label>
+    <input type="text" name="police_name" required>
+
+    <label>Position</label>
+    <input type="text" name="position" required>
+
+    <label>Mobile</label>
+    <input type="tel" name="mobile" required>
+
+    <button type="submit">Register</button>
+</form>
+
+<script>
+function togglePassword() {
+    const pwd = document.getElementById("password");
+    pwd.type = pwd.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

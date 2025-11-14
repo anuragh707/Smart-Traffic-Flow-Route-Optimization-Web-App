@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Routing System</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#111; color:#eee; }
+    #controls { padding:10px; background:#0f1720; display:flex; gap:8px; align-items:flex-start; flex-wrap:wrap; }
+    #controls input { padding:8px; border-radius:6px; border:1px solid #333; width:260px; background:#111; color:#fff; }
+    #controls button { padding:8px 12px; border-radius:6px; border:none; background:#ffcc00; color:#000; cursor:pointer; font-weight:700; }
+    #map { height:72vh; width:100%; display:block; }
+    #routes-panel { padding:10px; background:#0b1220; color:#ddd; max-height:22vh; overflow:auto; }
+    #routes-list li { list-style:none; padding:6px; border-bottom:1px solid rgba(255,255,255,0.03); cursor:pointer; }
+    #routes-list li:hover { background: rgba(255,255,255,0.02); }
+    .suggestions { position: absolute; z-index:9999; background:#0b1220; border:1px solid #222; color:#fff; max-height:160px; overflow:auto; width:260px; }
+    .suggestions li { padding:8px; cursor:pointer; }
+    .suggestions li:hover { background:#1b2630; }
+
+    /* Legend styles */
+    #legend {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(25, 25, 25, 0.9);
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #eee;
+      box-shadow: 0 0 6px rgba(0,0,0,0.6);
+      line-height: 1.5em;
+    }
+    #legend div { display:flex; align-items:center; margin:3px 0; }
+    #legend span {
+      display:inline-block;
+      width:14px;
+      height:14px;
+      margin-right:6px;
+      border-radius:50%;
+      border:2px solid #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="controls">
+    <div style="position:relative;">
+      <input id="start" placeholder="Start (city, address)"/>
+      <ul id="start-suggestions" class="suggestions" style="display:none;"></ul>
+      <button id="use-my-location-start">Use my start location</button>
+    </div>
+
+    <div style="position:relative;">
+      <input id="end" placeholder="Destination (city, address)"/>
+      <ul id="end-suggestions" class="suggestions" style="display:none;"></ul>
+      <button id="use-my-location-end">Use my dest location</button>
+    </div>
+
+    <button id="find-route">Find Route</button>
+    <button id="refresh-predictions">Refresh Predictions</button>
+  </div>
+
+  <div id="map"></div>
+
+  <!-- ✅ Legend Added -->
+  <div id="legend">
+    <div><span style="background:#00e5ff"></span>➤ Start Location</div>
+    <div><span style="background:#ff007f"></span>🏁 Destination</div>
+    <div><span style="background:rgba(255,80,0,0.9)"></span>Heavy Traffic</div>
+    <div><span style="background:rgba(50,200,50,0.9)"></span>Smooth Traffic</div>
+  </div>
+
+  <div id="routes-panel">
+    <strong>Routes</strong>
+    <ul id="routes-list"></ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

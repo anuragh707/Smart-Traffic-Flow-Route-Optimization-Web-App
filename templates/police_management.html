@@ -1,0 +1,11 @@
+{% for user in police_users %}
+    <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.police_id }}</td>
+        <td>
+            <form action="{{ url_for('remove_police', user_id=user.user_id) }}" method="post">
+                <button type="submit">Remove</button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
